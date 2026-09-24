@@ -1,0 +1,38 @@
+{
+  "name": "stratus-pe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/build-tokens.mjs",
+    "tokens": "node scripts/build-tokens.mjs",
+    "predev": "node scripts/build-tokens.mjs",
+    "dev": "node scripts/build-tokens.mjs --watch & next dev",
+    "prebuild": "node scripts/build-tokens.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "check:tokens": "node scripts/check-tokens.mjs",
+    "check": "npm run check:tokens && npm run lint && npm run typecheck",
+    "pendientes": "node scripts/pendientes.mjs"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "description": "Sitio web corporativo de Stratus Consulting — stratus.pe",
+  "engines": {
+    "node": ">=20.9"
+  }
+}
