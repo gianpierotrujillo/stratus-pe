@@ -21,6 +21,11 @@ export const logoMono = {
 /** Proporción del logo horizontal (ancho / alto del viewBox). */
 export const logoRatio = { width: 1266, height: 337 } as const;
 
+/** Versiones raster (datos estructurados, correos, redes). */
+export const brandAssets = {
+  logoRaster: `${dir}/stratus-consulting-logo.png`,
+};
+
 export const appIcons = {
   icon192: `${dir}/icon-192.png`,
   icon512: `${dir}/icon-512.png`,

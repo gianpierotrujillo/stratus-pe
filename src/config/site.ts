@@ -22,6 +22,7 @@ export const site = {
 
   contact: {
     email: "contacto@stratus.pe",
+    emailSubject: "Consulta desde stratus.pe",
     phone: PENDIENTE("Teléfono"),
     whatsapp: PENDIENTE("WhatsApp (formato 51XXXXXXXXX)"),
     responseTime: "Responderemos en un plazo máximo de 24 horas hábiles.",

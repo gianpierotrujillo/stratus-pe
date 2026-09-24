@@ -49,3 +49,19 @@ Ver `.env.example`. En Vercel: _Settings → Environment Variables_.
 
 - `SITE_INDEXABLE=true` **solo** en Producción el día del lanzamiento. Mientras no lo esté,
   todo el sitio responde `noindex` y `robots.txt` bloquea a los buscadores.
+
+## Flujo de ramas
+
+- `main` → **Producción** (stratus.pe). Solo recibe cambios revisados.
+- `develop` → **Vista previa** en Vercel (siempre `noindex`). Aquí se trabaja cada fase.
+
+```bash
+git checkout develop        # trabajar
+git push                    # Vercel publica la vista previa
+# cuando la fase está aprobada:
+git checkout main && git merge develop && git push   # sale a producción
+git checkout develop
+```
+
+En Producción, cualquier acceso por `*.vercel.app` redirige (308) a stratus.pe
+cuando `SITE_INDEXABLE=true`.

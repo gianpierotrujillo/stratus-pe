@@ -12,10 +12,12 @@ export const env = {
 
   /**
    * Solo cuando vale "true" el sitio permite ser indexado por Google.
-   * Se activa el día del lanzamiento; mientras tanto, cualquier despliegue
-   * (incluido *.vercel.app) queda como noindex.
+   * Además, solo aplica a despliegues de Producción (rama main): las vistas
+   * previas (rama develop, etc.) quedan siempre como noindex.
    */
-  indexable: process.env.SITE_INDEXABLE === "true",
+  indexable:
+    process.env.SITE_INDEXABLE === "true" &&
+    (process.env.VERCEL_ENV === undefined || process.env.VERCEL_ENV === "production"),
 
   /** ID de medición GA4 (G-XXXXXXX). Vacío = analítica desactivada. */
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
