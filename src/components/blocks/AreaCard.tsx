@@ -46,6 +46,10 @@ export function AreaCard({ area, href, as: Heading = "h3" }: AreaCardProps) {
 }
 
 /** Grilla con líneas divisorias finas entre tarjetas. */
-export function AreaGrid({ children }: { children: React.ReactNode }) {
-  return <div className="grid gap-px border border-line bg-line md:grid-cols-2">{children}</div>;
+export function AreaGrid({ children, columns = 2 }: { children: React.ReactNode; columns?: 2 | 3 }) {
+  return (
+    <div className={`grid gap-px border border-line bg-line ${columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2"}`}>
+      {children}
+    </div>
+  );
 }

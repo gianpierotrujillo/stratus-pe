@@ -8,6 +8,7 @@ import { site } from "@/config/site";
 import { practiceAreas } from "@/content/areas";
 import { trackAttrs } from "@/lib/analytics";
 import { mailtoHref } from "@/lib/contact";
+import { areaPath } from "@/lib/routes";
 
 const colTitle = "mb-6 font-display text-eyebrow font-semibold uppercase tracking-eyebrow text-accent-text";
 const link = "text-small text-body transition-colors duration-(--motion-base) ease-brand hover:text-heading";
@@ -32,7 +33,7 @@ export function SiteFooter() {
           <ul className="flex flex-col gap-3">
             {practiceAreas.map((area) => (
               <li key={area.slug}>
-                <Link href={`/areas-de-practica/${area.slug}`} className={link}>
+                <Link href={areaPath(area.slug)} className={link}>
                   {area.title}
                 </Link>
               </li>

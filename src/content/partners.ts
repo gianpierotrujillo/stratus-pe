@@ -8,6 +8,8 @@ export type Partner = {
   name: string;
   role: string;
   credential: string;
+  /** Casa de estudios (datos estructurados). */
+  education: string;
   bio: string;
   specialties: readonly string[];
   photo: { src: string; alt: string; width: number; height: number };
@@ -17,24 +19,26 @@ export type Partner = {
 export const partners: readonly Partner[] = [
   {
     slug: "luis-garcia-neyra",
-    name: "Luis Garcia Neyra",
+    name: "Luis García Neyra",
     role: "Socio",
     credential: "Abogado y candidato a MBA — Universidad de Lima",
+    education: "Universidad de Lima",
     bio: 'Cuenta con más de 15 años de experiencia asesorando a empresas, organizaciones sin fines de lucro y entidades del Estado en materia ambiental, recursos naturales, derecho de los pueblos indígenas y financiamiento e implementación de emprendimientos sostenibles. Ha sido Co-fundador y Gerente General de Tambopata Expeditions S.A.C., empresa peruana impulsora del desarrollo de "Las Piedras Amazon Center - LPAC". Actualmente brinda asesoría a diversos proyectos y empresas familiares para la prevención de riesgos desde su inicio y el escalamiento de oportunidades. Habla inglés fluido.',
     specialties: ["Derecho Ambiental", "Recursos Naturales", "Pueblos Indígenas", "Emprendimientos Sostenibles"],
     photo: {
       src: "/images/equipo/luis-garcia-neyra-abogado-socio-stratus-consulting.jpg",
-      alt: "Luis Garcia Neyra, abogado y socio de Stratus Consulting",
+      alt: "Luis García Neyra, abogado y socio de Stratus Consulting",
       width: 1200,
       height: 1600,
     },
-    linkedin: PENDIENTE("LinkedIn de Luis Garcia Neyra"),
+    linkedin: PENDIENTE("LinkedIn de Luis García Neyra"),
   },
   {
     slug: "jose-miguel-tay",
     name: "José Miguel Tay",
     role: "Socio",
     credential: "Abogado y Máster en Derecho Empresarial — Universidad de Lima",
+    education: "Universidad de Lima",
     bio: "Cuenta con más de 15 años de experiencia asesorando a empresas en derecho corporativo, laboral, gestión de tierras, derecho inmobiliario y solución de controversias. Actualmente brinda asesoría a diversos proyectos y empresas familiares, orientando la búsqueda de soluciones holísticas para capitalizar oportunidades. Habla inglés fluido.",
     specialties: ["Derecho Corporativo", "Derecho Laboral", "Gestión de Tierras", "Derecho Inmobiliario"],
     photo: {
@@ -46,3 +50,5 @@ export const partners: readonly Partner[] = [
     linkedin: PENDIENTE("LinkedIn de José Miguel Tay"),
   },
 ];
+
+export const getPartner = (slug: string) => partners.find((p) => p.slug === slug);

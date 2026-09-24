@@ -6,16 +6,19 @@ import { isPending } from "@/config/pending";
 import type { Partner } from "@/content/partners";
 import { trackAttrs } from "@/lib/analytics";
 import { mq, sizes } from "@/design/media";
+import { partnerPath } from "@/lib/routes";
 
 type PartnerCardProps = {
   partner: Partner;
   /** "full" = perfil con biografía y especialidades · "compact" = foto + nombre + enlace. */
   variant?: "full" | "compact";
   href?: string;
-  as?: "h2" | "h3";
+  as?: "h1" | "h2" | "h3";
+  /** Contenido adicional al final de la columna de texto (perfil completo). */
+  children?: React.ReactNode;
 };
 
-export function PartnerCard({ partner, variant = "full", href, as: Heading = "h2" }: PartnerCardProps) {
+export function PartnerCard({ partner, variant = "full", href, as: Heading = "h2", children }: PartnerCardProps) {
   const photo = (
     <div className="relative aspect-3/4 overflow-hidden bg-surface-raised">
       <Image
@@ -34,7 +37,7 @@ export function PartnerCard({ partner, variant = "full", href, as: Heading = "h2
   if (variant === "compact") {
     return (
       <Link
-        href={href ?? `/equipo/${partner.slug}`}
+        href={href ?? partnerPath(partner.slug)}
         className="group block"
         {...trackAttrs({ event: "cta_click", location: "card", id: `socio_${partner.slug}` })}
       >
@@ -79,6 +82,7 @@ export function PartnerCard({ partner, variant = "full", href, as: Heading = "h2
             <LinkedInIcon className="size-5" /> LinkedIn
           </a>
         )}
+        {children && <div className="mt-10">{children}</div>}
       </div>
     </article>
   );

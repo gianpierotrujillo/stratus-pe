@@ -20,6 +20,7 @@ import { env } from "@/config/env";
 import { tokens, type Tone } from "@/design/tokens";
 import { practiceAreas } from "@/content/areas";
 import { partners } from "@/content/partners";
+import { areaPath } from "@/lib/routes";
 
 export const metadata: Metadata = {
   title: "Guía de estilo",
@@ -145,7 +146,7 @@ export default function StyleGuidePage() {
         <div className="mt-14">
           <AreaGrid>
             {practiceAreas.map((a) => (
-              <AreaCard key={a.slug} area={a} href={`/areas-de-practica/${a.slug}`} />
+              <AreaCard key={a.slug} area={a} href={areaPath(a.slug)} />
             ))}
           </AreaGrid>
         </div>

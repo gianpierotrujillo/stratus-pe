@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check:tokens": "node scripts/check-tokens.mjs",
     "check": "npm run check:tokens && npm run lint && npm run typecheck",
     "pendientes": "node scripts/pendientes.mjs"

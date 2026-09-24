@@ -16,9 +16,3 @@ export const legalNav = [
   { label: "Política de privacidad", href: "/politica-de-privacidad" },
   { label: "Política de cookies", href: "/politica-de-cookies" },
 ] as const;
-
-/**
- * Rutas publicadas. Se amplía en cada fase conforme existan las páginas;
- * el sitemap solo incluye las que figuran aquí.
- */
-export const publishedRoutes: readonly string[] = ["/"];
