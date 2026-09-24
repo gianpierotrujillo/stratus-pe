@@ -15,6 +15,8 @@ import { areaDetail, ctas } from "@/content/firm";
 import { getPartner, type Partner } from "@/content/partners";
 import { areaPath, partnerPath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { serviceSchema } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/areas-de-practica
   const { slug } = await params;
   const area = getArea(slug);
   if (!area) return {};
-  return pageMetadata({ title: area.title, description: area.summary, path: areaPath(area.slug) });
+  return pageMetadata({ title: area.title, description: area.summary, path: areaPath(area.slug), ownImage: true });
 }
 
 export default async function AreaPage({ params }: PageProps<"/areas-de-practica/[slug]">) {
@@ -40,6 +42,7 @@ export default async function AreaPage({ params }: PageProps<"/areas-de-practica
 
   return (
     <>
+      <JsonLd data={serviceSchema(area)} />
       <ViewMarker event="practice_area_view" params={{ area_slug: area.slug }} />
       <PageHeader
         eyebrow={areaDetail.eyebrow(area.numeral)}

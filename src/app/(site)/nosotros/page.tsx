@@ -7,18 +7,25 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { about, ctas, firmStats } from "@/content/firm";
 import { images } from "@/content/images";
 import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { legalServiceSchema, webPageSchema } from "@/lib/structured-data";
 
-export const metadata = pageMetadata({
+const meta = {
   title: "Nosotros",
   description:
     "Stratus Consulting es un estudio de abogados en Lima que combina rigor técnico y visión estratégica para acompañar a empresas, entidades públicas y organizaciones en sus decisiones críticas.",
   path: "/nosotros",
-  image: images.partnersTogether.src,
-});
+};
+
+export const metadata = pageMetadata(meta);
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({ type: "AboutPage", name: meta.title, description: meta.description, path: meta.path })}
+      />
+      <JsonLd data={legalServiceSchema()} />
       <PageHeader
         eyebrow="Nosotros"
         title={about.hero.title}

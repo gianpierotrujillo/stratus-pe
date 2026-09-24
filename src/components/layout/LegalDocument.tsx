@@ -2,12 +2,15 @@ import { Pending, showField } from "@/components/ui/Pending";
 import { Section } from "@/components/ui/Section";
 import type { LegalDoc } from "@/content/legal";
 import { PageHeader } from "./PageHeader";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { webPageSchema } from "@/lib/structured-data";
 
 /** Plantilla de página legal: cabecera + apartados numerados. */
 export function LegalDocument({ doc }: { doc: LegalDoc }) {
   const sections = doc.sections.filter((s) => showField(s.body));
   return (
     <>
+      <JsonLd data={webPageSchema({ name: doc.title, description: doc.description, path: `/${doc.slug}` })} />
       <PageHeader
         eyebrow="Información legal"
         title={doc.title}

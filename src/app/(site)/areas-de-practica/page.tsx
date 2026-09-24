@@ -8,17 +8,29 @@ import { practiceAreas } from "@/content/areas";
 import { approach, areasPage, ctas } from "@/content/firm";
 import { areaPath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { webPageSchema } from "@/lib/structured-data";
 
-export const metadata = pageMetadata({
+const meta = {
   title: "Áreas de práctica",
   description:
     "Derecho ambiental y de los recursos naturales, derecho empresarial, asesoría para organizaciones sin fines de lucro y Fractional Legal Counsel en Lima, Perú.",
   path: "/areas-de-practica",
-});
+};
+
+export const metadata = pageMetadata(meta);
 
 export default function AreasPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          type: "CollectionPage",
+          name: meta.title,
+          description: meta.description,
+          path: meta.path,
+        })}
+      />
       <PageHeader
         eyebrow={areasPage.hero.eyebrow}
         title={areasPage.hero.title}

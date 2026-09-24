@@ -11,7 +11,7 @@ import { ctas, partnerDetail } from "@/content/firm";
 import { getPartner, partners } from "@/content/partners";
 import { areaPath, partnerPath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { personSchema } from "@/lib/structured-data";
+import { profilePageSchema } from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: PageProps<"/equipo/[slug]">) 
     title: `${partner.name} — ${partner.role}`,
     description: `${partner.credential}. ${partner.specialties.join(", ")}.`,
     path: partnerPath(partner.slug),
-    image: partner.photo.src,
+    ogType: "profile",
+    ownImage: true,
   });
 }
 
@@ -41,7 +42,7 @@ export default async function PartnerPage({ params }: PageProps<"/equipo/[slug]"
   return (
     <>
       <ViewMarker event="team_profile_view" params={{ partner_slug: partner.slug }} />
-      <JsonLd data={personSchema(partner)} />
+      <JsonLd data={profilePageSchema(partner)} />
 
       <Section tone="light">
         <Breadcrumbs

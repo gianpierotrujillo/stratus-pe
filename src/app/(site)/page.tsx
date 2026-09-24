@@ -18,13 +18,22 @@ import { ctas, differentiators, firmQuote, firmStats, home } from "@/content/fir
 import { images } from "@/content/images";
 import { partners } from "@/content/partners";
 import { areaPath } from "@/lib/routes";
-import { legalServiceSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/seo";
+import { legalServiceSchema, webSiteSchema } from "@/lib/structured-data";
+
+export const metadata = pageMetadata({
+  title: site.seoTitle,
+  absoluteTitle: true,
+  description: site.description,
+  path: "/",
+});
 
 export default function HomePage() {
   const [first, second, third] = site.tagline.split(" ");
 
   return (
     <>
+      <JsonLd data={webSiteSchema()} />
       <JsonLd data={legalServiceSchema()} />
 
       {/* Hero */}

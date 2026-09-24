@@ -8,18 +8,28 @@ import { ctas, teamPage } from "@/content/firm";
 import { partners } from "@/content/partners";
 import { partnerPath } from "@/lib/routes";
 import { pageMetadata } from "@/lib/seo";
-import { personSchema } from "@/lib/structured-data";
+import { personSchema, webPageSchema } from "@/lib/structured-data";
 
-export const metadata = pageMetadata({
+const meta = {
   title: "Equipo",
   description:
     "Conozca a los socios de Stratus Consulting: Luis García Neyra y José Miguel Tay, abogados de la Universidad de Lima con más de 15 años de experiencia.",
   path: "/equipo",
-});
+};
+
+export const metadata = pageMetadata(meta);
 
 export default function TeamPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          type: "CollectionPage",
+          name: meta.title,
+          description: meta.description,
+          path: meta.path,
+        })}
+      />
       {partners.map((p) => (
         <JsonLd key={p.slug} data={personSchema(p)} />
       ))}

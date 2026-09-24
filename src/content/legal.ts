@@ -2,7 +2,7 @@
  * PÁGINAS LEGALES — estructura según la Ley N.° 29733 (Protección de Datos
  * Personales) y su reglamento. El texto de cada apartado lo redactan los socios.
  */
-import { PENDIENTE } from "@/config/pending";
+import { PENDIENTE, isPending } from "@/config/pending";
 
 export type LegalDoc = {
   slug: string;
@@ -58,3 +58,9 @@ export const cookiePolicy: LegalDoc = {
     { heading: "Contacto", body: PENDIENTE("Canal para consultas sobre cookies") },
   ],
 };
+
+/** true cuando el documento ya tiene su texto completo (sin PENDIENTE). */
+export const isLegalDocReady = (doc: LegalDoc) =>
+  !isPending(doc.updated) && doc.sections.every((s) => !isPending(s.body));
+
+export const legalDocs = [privacyPolicy, cookiePolicy] as const;

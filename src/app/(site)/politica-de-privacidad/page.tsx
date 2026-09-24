@@ -1,13 +1,17 @@
 import { LegalDocument } from "@/components/layout/LegalDocument";
-import { privacyPolicy } from "@/content/legal";
+import { isLegalDocReady, privacyPolicy } from "@/content/legal";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata = pageMetadata({
-  title: privacyPolicy.title,
-  description: privacyPolicy.description,
-  path: `/${privacyPolicy.slug}`,
-});
+export const metadata = {
+  ...pageMetadata({
+    title: privacyPolicy.title,
+    description: privacyPolicy.description,
+    path: `/${privacyPolicy.slug}`,
+  }),
+  // Mientras el texto legal esté pendiente, la página no se indexa.
+  ...(isLegalDocReady(privacyPolicy) ? {} : { robots: { index: false, follow: true } }),
+};
 
-export default function PrivacyPage() {
+export default function Page() {
   return <LegalDocument doc={privacyPolicy} />;
 }

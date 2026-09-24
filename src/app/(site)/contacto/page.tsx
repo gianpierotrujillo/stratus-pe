@@ -11,13 +11,17 @@ import { images } from "@/content/images";
 import { trackAttrs } from "@/lib/analytics";
 import { mailtoHref } from "@/lib/contact";
 import { pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { legalServiceSchema, webPageSchema } from "@/lib/structured-data";
 
-export const metadata = pageMetadata({
+const meta = {
   title: "Contacto",
   description:
     "Contacte a Stratus Consulting, estudio de abogados en Lima. Cuéntenos su caso y le responderemos en un plazo máximo de 24 horas hábiles.",
   path: "/contacto",
-});
+};
+
+export const metadata = pageMetadata(meta);
 
 function InfoItem({ icon, label, children }: { icon: ReactNode; label: string; children: ReactNode }) {
   return (
@@ -37,6 +41,10 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLd
+        data={webPageSchema({ type: "ContactPage", name: meta.title, description: meta.description, path: meta.path })}
+      />
+      <JsonLd data={legalServiceSchema()} />
       <PageHeader
         eyebrow={contactPage.hero.eyebrow}
         title={contactPage.hero.title}

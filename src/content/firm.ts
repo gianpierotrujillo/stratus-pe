@@ -100,6 +100,8 @@ export const ctas = {
 
 /** Inicio. */
 export const home = {
+  /** Subtítulo de la imagen al compartir el sitio en redes/WhatsApp. */
+  share: "Asesoría legal, consultoría empresarial y gestión de intereses para entidades públicas y privadas.",
   hero: {
     lead: "Acompañamos a entidades públicas y privadas en sus decisiones más críticas. Asesoría legal, consultoría empresarial y gestión de intereses con rigor, experiencia y visión estratégica.",
     primary: "Conocer nuestros servicios",

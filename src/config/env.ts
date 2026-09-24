@@ -19,6 +19,9 @@ export const env = {
     process.env.SITE_INDEXABLE === "true" &&
     (process.env.VERCEL_ENV === undefined || process.env.VERCEL_ENV === "production"),
 
+  /** Opcional: código de verificación HTML de Google Search Console (si no se usa el registro DNS). */
+  googleVerification: process.env.GOOGLE_SITE_VERIFICATION ?? "",
+
   /** ID de medición GA4 (G-XXXXXXX). Vacío = analítica desactivada. */
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
 } as const;

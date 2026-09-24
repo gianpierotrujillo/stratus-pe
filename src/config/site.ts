@@ -17,6 +17,8 @@ export const site = {
   lang: "es-PE",
 
   tagline: "Estrategia. Derecho. Resultados.",
+  /** Título de la página de inicio en Google y al compartir. */
+  seoTitle: "Stratus Consulting | Estudio de abogados en Lima",
   description:
     "Estudio de abogados en Lima. Asesoría legal en derecho ambiental y recursos naturales, derecho empresarial, organizaciones sin fines de lucro y Fractional Legal Counsel.",
 
