@@ -5,5 +5,4 @@
  */
 export const PENDIENTE = (descripcion: string) => `[PENDIENTE: ${descripcion}]` as const;
 
-export const isPending = (value: unknown): boolean =>
-  typeof value === "string" && value.startsWith("[PENDIENTE");
+export const isPending = (value: unknown): boolean => typeof value === "string" && value.startsWith("[PENDIENTE");
